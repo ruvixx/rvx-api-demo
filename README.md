@@ -12,5 +12,10 @@ $> bundle install
 
 $> chmod 755 ./example.rb
 
+-- UPDATE your .env file to include
+SECRET=XXXX
+KEY=XXXX
+URL=http://---rvx-platform-url
+
 $> ./example.rb
 ```
