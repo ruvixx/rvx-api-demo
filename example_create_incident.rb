@@ -12,7 +12,7 @@ require 'date'
 RestClient.log = $stdout
 
 @request = RestClient::Request.new(
-  :url => ENV['URL'],
+  :url => ENV['URL']+"/api/v1/incidents",
   :method => :post,
   :headers => {
     'Content-Type' => 'application/json'
@@ -51,7 +51,7 @@ RestClient.log = $stdout
         amount: 29.99,
         technologies: [
           {
-            name: "HDMI",
+            name: "HDMI", # this has to match in the incident
           }
         ]
       }
@@ -61,4 +61,6 @@ RestClient.log = $stdout
 
 @signed_request = ApiAuth.sign!(@request, @access_id, @secret_key)
 
-@signed_request.execute
+response = @signed_request.execute
+
+$stdout.print response.to_s + "\n"
