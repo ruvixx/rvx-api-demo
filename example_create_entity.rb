@@ -27,17 +27,17 @@ RestClient.log = $stdout
       {
         contract_name: "Sample name",
         contract_num: "AGR1200655", #require
-        contract_effective_date: '2015-01-01',
-        contract_end_date: '2015-03-01',
-        reporting_effective_date: '2015-03-01',
-        reporting_end_date: '2015-06-01',
-        termination_date: '2015-01-01',
-        application_date: '2015-01-01',
-        suspension_date: '2015-01-01',
+        contract_effective_date: "2015-01-01",
+        contract_end_date: "2015-03-01",
+        reporting_effective_date: "2015-03-01",
+        reporting_end_date: "2015-06-01",
+        termination_date: "2015-01-01",
+        application_date: "2015-01-01",
+        suspension_date: "2015-01-01",
         details: "--- These details are a sample from rvx-api-demo --",
         technologies: [
           {
-            technology_id: 1
+            technology_num: "test_tech_num"
           }
         ]
       }
