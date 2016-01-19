@@ -20,28 +20,26 @@ RestClient.log = $stdout
   :payload => {
     brand: "Sample Brand", #required
     model: "Sample Model", #required
+    notes: "--- These notes are a sample from rvx-api-demo --",
     entity_num: "sample_entity",
-    manufacturer_id: 1,
+    manufacturer: "sample_manufacturer",
     mfg_model: "sample mfg",
-    product_category_id: 1,
-    royalty_paid_by_entity_id: 1,
+    product_category: "sample",
+    royalty_paid_by_entity: "entity_sample",
     product_num: "sample number",
     internal_model_num: "sample internal number",
-    dsp_entity_id: 1,
-    e3p_entity_id: 1,
+    dsp_entity: "sample_dsp_entity",
+    e3p_entity: "sample_e3p_entity",
     date_first_manufacture: "2015-03-01",
-    product_status_id: 1,
-    product_source_id: 1,
-    revision_of_product_id: 1,
-    logo_used_id: 1,
-    certification_attached_id: 1,
+    product_status: "sample",
+    product_source: "sample",
     project_name: "Sample name",
     end_of_life_at: "2018-03-01",
     msrp: "0.00",
     technologies: [
       {
-        technology_id: 1,
-        certified: true
+        technology_num: 'test_tech_num',
+        certified: "true"
       }
     ]
   }.to_json)

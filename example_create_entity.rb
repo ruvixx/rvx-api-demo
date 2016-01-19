@@ -20,6 +20,7 @@ RestClient.log = $stdout
   :payload => {
     name: "HDMI001", #required
     url: "www.sample.from.rvx-api-demo",
+    country: "Afghanistan",
     notes: "--- These notes are a sample from rvx-api-demo --",
     ignored: false,
     entity_num: "test_name", #required
@@ -37,7 +38,8 @@ RestClient.log = $stdout
         details: "--- These details are a sample from rvx-api-demo --",
         technologies: [
           {
-            technology_num: "test_tech_num"
+            technology_num: "test_tech_num",
+            reporting_type: "sample"
           }
         ]
       }
