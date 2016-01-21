@@ -1,21 +1,21 @@
 # rvx-api-demo
 
-This repo is just a quick example of how to connect and sign a request to the RVX Platform API.
+This repo is an interactive documentation of how to connect and sign a request to the RVX Platform API.
 
-The Authorization signature is built using the proceedure described here:
-https://github.com/mgomes/api_auth
+The Authorization signature is built using the procedure described here:
+https://github.com/mgomes/api_auth#how-it-works
 
-required `ruby-2.2.2`
+We have provided a Ruby example which simply shows the JSON payload for the following REST actions:
 
-```
-$> bundle install
+- "Create Incident" POST /v1/incidents [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_create_incident.rb)
 
-$> chmod 755 ./example_create_incident.rb
+- "Get Incidents" GET /v1/incidents [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_get_incidents.rb)
 
--- UPDATE your .env file to include
-SECRET=XXXX
-KEY=XXXX
-URL=http://---rvx-platform-url
+- "Create Royalty Report" POST /v1/royalty_reports/new [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_create_royalty_report.rb)
 
-$> ./example_create_incident.rb
-```
+- "Create Entity" POST /v1/entities/new [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_create_entity.rb)
+
+- "Create Certified Product" POST /v1/products/new [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_create_product.rb)
+
+
+We have provided a Java implementation from one of our partners for those using Java. [See Java example](https://github.com/ruvixx/rvx-api-demo/blob/master/java)

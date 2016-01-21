@@ -28,7 +28,7 @@ RestClient.log = $stdout
     notes: "--- These notes are a sample from rvx-api-demo --",
     invoice_num: "#SAMPLE123",
     invoiced_at: "2015-02-01 14:03:32",
-    historical: "Y", # false, true, 'Y', 'N'
+    historical: "Y", # false, true, 'Y', 'N' - sets the timestamps correctly if this is a legacy report
     royalty_report_items: [
       {
         fuz_contract_num: "SAMPLE123", #require if contract validation enabled
