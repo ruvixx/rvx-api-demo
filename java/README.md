@@ -19,6 +19,6 @@ $> gradlew # for windows
 
 $> ./gradlew bootRun
 
--- You should now have successfully created an incident on http://hdmi.feature.ruvixx.com
+-- You should now have successfully created an incident
 
 ```
