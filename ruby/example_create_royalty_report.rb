@@ -21,9 +21,6 @@ RestClient.log = $stdout
     entity_num: "HDMI001", #required
     start_date: '2015-01-01',
     end_date: '2015-03-31',
-    amount: "12000.00",
-    exchange_rate: "1.0",
-    exchanged_amount: "12000.00",
     currency: "USD",
     notes: "--- These notes are a sample from rvx-api-demo --",
     invoice_num: "#SAMPLE123",
@@ -41,10 +38,8 @@ RestClient.log = $stdout
         fuz_application_market: "",
         fuz_description: "-- This description is a sample description from rvx-api-demo call --",
         unit_price: "100.00",
-        exchanged_unit_price: "100.00",
         qty: "100",
         royalty_due: "1000.00",
-        exchanged_royalty_due: "1000.00",
         # royalty_calculation: 'none' | 'simple' | 'asp' | 'custom'
         avg_sales_price: "93.00",
         net_revenue: "700.00",

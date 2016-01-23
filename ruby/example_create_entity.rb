@@ -22,7 +22,6 @@ RestClient.log = $stdout
     url: "www.sample.from.rvx-api-demo",
     country: "Afghanistan",
     notes: "--- These notes are a sample from rvx-api-demo --",
-    ignored: false,
     entity_num: "test_name", #required
     contracts: [
       {
