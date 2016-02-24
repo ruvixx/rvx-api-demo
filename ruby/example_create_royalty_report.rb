@@ -28,15 +28,16 @@ RestClient.log = $stdout
     historical: "Y", # false, true, 'Y', 'N' - sets the timestamps correctly if this is a legacy report
     royalty_report_items: [
       {
-        fuz_contract_num: "SAMPLE123", #require if contract validation enabled
-        fuz_brand: "COBRA", #required
-        fuz_model: "CDR900", #required
+        royalty_report_num: "MY_RR_NUM1234", # your RR identifier
+        contract_num: "SAMPLE123", #require if contract validation enabled
+        brand: "COBRA", #required
+        model: "CDR900", #required
         new_product: "N", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
-        fuz_technology: "HDMI", #required
+        technology_num: "HDMI", #required
         qty_technology: 1, #required
-        fuz_application_type: "",
-        fuz_application_market: "",
-        fuz_description: "-- This description is a sample description from rvx-api-demo call --",
+        application_type: "",
+        application_market: "",
+        description: "-- This description is a sample description from rvx-api-demo call --",
         unit_price: "100.00",
         qty: "100",
         royalty_due: "1000.00",
