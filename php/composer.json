@@ -1,0 +1,13 @@
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ruvixx/api-auth-client-plugin"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "dchapkine/guzzle-http-signature": "dev-master",
+        "sanchobbdo/api-auth-client-plugin": "~1.0.0"
+    }
+}
