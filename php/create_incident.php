@@ -19,20 +19,13 @@ use SanchoBBDO\Guzzle\Plugin\ApiAuth\ApiAuthPlugin;
 // Mount the client so that you can access it at \Guzzle
 Guzzle\Http\StaticClient::mount(); //https://github.com/dchapkine/guzzle-http-signature
 
+$access_id = "";
+$secret_key = "";
 
-//$access_id = @ENV['KEY'];
-//$access_id = "da6cc388-3381-4ef0-8f39-706f49a95d8d";
-//$secret_key = @ENV['SECRET'];
-//$secret_key = "dIiXikNJgaSKlo5o07BatGx3QV/DlvS70q2jYtKfq+rPhDbeuN9vuTllfE3DWFUZsNQl0LPRWE1V+ok4vG9FcQ==";
-
-$access_id = "d2f95694-0972-48f4-be19-a7f82670a859";
-$secret_key = "ADKNHnYcPMEMM3Y4P6EPz+KTmc4/n6ctDsQ8nzg8fwmxNfDO4r8uyBbSnTe9xzQBqCP4fHZ4g6KZb1SfWgNCTQ==";
-
-//$requestUrl = "https://itrace.ruvixx.com/api/v1/incidents";
-$requestUrl = "http://hdmi.ruvixx.local:5000/api/v1/incidents";
+$rootHost = "https://{YOUR INSTANCE HERE}";
+$requestUrl = $rootHost . "/api/v1/incidents";
 $requestMethod = 'POST';
 
-date_default_timezone_set("GMT");
 
 	$requestHeader = array(     // headers we want to include into signature
 	    //'url' => $requestUrl,
@@ -90,7 +83,7 @@ date_default_timezone_set("GMT");
     $requestData = json_encode($payload);
     
 	//$client = new Client();
-	$client = new Client('http://hdmi.ruvixx.local:5000');
+	$client = new Client($rootHost);
 	$apiAuthPlugin = new ApiAuthPlugin(array(
     		'accessId' =>  $access_id,
     		'secretKey' =>  $secret_key
