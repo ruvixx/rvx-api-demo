@@ -46,9 +46,7 @@ $requestMethod = 'POST';
    		   			'id' => 1  # OPEN
     			),
     
-    			'country' => array (
-      				'name' => "United States"
-    			),
+    			'country' => "United States",
     
     			'reporting_entity' => array (
       				'name' => "SAMPLE REPORTER"
