@@ -12,7 +12,7 @@ require 'date'
 RestClient.log = $stdout
 
 @request = RestClient::Request.new(
-  :url => ENV['URL']+"/api/v1/incidents",
+  :url => ENV['URL']+"/api/v1/developer/incidents",
   :method => :post,
   :headers => {
     'Content-Type' => 'application/json'
@@ -24,34 +24,53 @@ RestClient.log = $stdout
     description: "varchar(255)",
     incident_text: "LONGTEXT",
     status: {
-      id: 1  # OPEN
+      id: 1,  # OPEN
+      name: nil
     },
-    country: {
-      name: 'United States'
-    },
+    iso3_country: 'AUT',
     reporting_entity: {
+      id: nil,
       name: 'SAMPLE REPORTER'
     },
     infringement_type: {
-      id: 7,
-      name: 'Counterfeiting'
+      name: 'Trademark'
     },
     incident_type: {
-      id: 4,
-      name: 'Website'
+      name: 'Royalty Report'
     },
     incident_date: Date.today, # YYYY-MM-DD
     identified_unknown_products: [
       {
         product: {
           model: "MODELNUM",
-          brand: "BRANDNAME"
+          brand: "BRANDNAME",
+          product_category: 'STB'
         },
         qty: 1,
         amount: 29.99,
         technologies: [
           {
-            name: "HDMI", # this has to match in the incident
+            technology_num: "HDMI", # this has to match in the incident
+            certified: nil
+          }
+        ]
+      }
+    ],
+    identified_products: [
+      {
+        product: {
+          model: "KNOWN MODEL",
+          brand: "KNOWN BRAND",
+          product_category: 'Tablet',
+          entity: {
+            name: "SAMPLE REPORTER"
+          }
+        },
+        qty: 10,
+        amount: 29.99,
+        technologies: [
+          {
+            name: "HDMI" # this has to match in the incident
           }
         ]
       }
@@ -59,7 +78,7 @@ RestClient.log = $stdout
   }.to_json)
 
 
-@signed_request = ApiAuth.sign!(@request, @access_id, @secret_key)
+@signed_request = ApiAuth.sign!(@request, @access_id, @secret_key, :with_http_method => true)
 
 response = @signed_request.execute
 

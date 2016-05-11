@@ -12,30 +12,31 @@ require 'date'
 RestClient.log = $stdout
 
 @request = RestClient::Request.new(
-  :url => ENV['URL']+"/api/v1/products/new",
+  :url => ENV['URL']+"/api/v1/developer/products",
   :method => :post,
   :headers => {
     'Content-Type' => 'application/json'
   },
   :payload => {
-    brand: "Sample Brand", #required
-    model: "Sample Model", #required
+    brand: "Sample Brand11", #required
+    model: "Sample Model11", #required
     notes: "--- These notes are a sample from rvx-api-demo --",
-    entity_num: "sample_entity",
-    manufacturer: "sample_manufacturer",
+    entity_num: "HDMI001",
+    manufacturer: "HDMI001",
     mfg_model: "sample mfg",
-    product_category: "sample",
-    royalty_paid_by_entity: "entity_sample",
-    product_num: "sample number",
+    product_category: "Tablet",
+    # royalty_paid_by_entity: "",
+    product_num: "sample number11",
     date_first_manufacture: "2015-03-01",
-    product_status: "sample",
-    product_source: "sample",
+    product_status: "In Design",
+    product_source: "Other",
     project_name: "Sample name",
     end_of_life_at: "2018-03-01",
+    has_sticker: "Y",
     msrp: "0.00",
     technologies: [
       {
-        technology_num: 'test_tech_num',
+        technology_num: 'HDMI',
         certified: "true"
       }
     ]
