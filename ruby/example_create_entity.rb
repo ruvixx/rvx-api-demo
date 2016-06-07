@@ -12,20 +12,20 @@ require 'date'
 RestClient.log = $stdout
 
 @request = RestClient::Request.new(
-  :url => ENV['URL']+"/api/v1/entities/new",
+  :url => ENV['URL']+"/api/v1/developer/entities",
   :method => :post,
   :headers => {
     'Content-Type' => 'application/json'
   },
   :payload => {
-    name: "HDMI001", #required
+    name: "HDMI004", #required
     url: "www.sample.from.rvx-api-demo",
     country: "Afghanistan",
     notes: "--- These notes are a sample from rvx-api-demo --",
     entity_num: "test_name", #required
     contracts: [
       {
-        contract_name: "Sample name",
+        name: "Sample name",
         contract_num: "AGR1200655", #require
         contract_effective_date: "2015-01-01",
         contract_end_date: "2015-03-01",
@@ -35,10 +35,12 @@ RestClient.log = $stdout
         application_date: "2015-01-01",
         suspension_date: "2015-01-01",
         details: "--- These details are a sample from rvx-api-demo --",
+        #must be included if contracts included
         technologies: [
           {
-            technology_num: "test_tech_num",
-            reporting_type: "sample"
+            technology_num: "HDMI",
+            #either "QIA" or "Not Reporting"
+            reporting_type: "Not Reporting"
           }
         ]
       }
