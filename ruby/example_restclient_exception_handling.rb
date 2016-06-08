@@ -12,6 +12,10 @@ require 'date'
 
 RestClient.log = $stdout
 
+# Example of Restclient Exception handling. Required to see Developer Api error message
+# Example attempts to add Royalty Report Items to a Royalty Report that has already been invoiced.
+# Should return a 400 response.
+
 @request = RestClient::Request.new(
   :url => ENV['URL']+"/api/v1/developer/royalty_reports/MY_RR_NUM1234/royalty_report_items",
   :method => :patch,
