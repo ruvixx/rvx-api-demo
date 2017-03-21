@@ -16,18 +16,22 @@ class ApiCaller
   def call_api(request)
     @signed_request = ApiAuth.sign!(request, @access_id, @secret_key, :with_http_method => true)
 
-    response = @signed_request.execute
-
-    $stdout.print response.to_s + "\n"
-
-    response
+    begin
+      response = @signed_request.execute
+      $stdout.print response.to_s + "\n"
+      response
+    rescue => bad_request
+      response = JSON.parse(bad_request.response)
+      $stdout.print("#{bad_request.message}: #{response["error"]}\n")
+      response
+    end
   end
 
 end
 
 RestClient.log = $stdout
 
-example_report_num = "MY_RR_NUM1234"
+example_report_num = "MY_RR_NUM00000000001000"
 
 create_rr_request = RestClient::Request.new(
   :url => ENV['URL']+"/api/v1/developer/royalty_reports",
@@ -36,7 +40,7 @@ create_rr_request = RestClient::Request.new(
     'Content-Type' => 'application/json'
   },
   :payload => {
-    entity_num: "HDMI001", #required
+    entity_num: "vizio_num", #required
     royalty_report_num: example_report_num, # your RR identifier
     start_date: '2015-01-01',
     end_date: '2015-03-31',
@@ -46,11 +50,11 @@ create_rr_request = RestClient::Request.new(
     amount: "1000.00",
     royalty_report_items: [
       {
-        contract_num: "SAMPLE123", #require if contract validation enabled
+        contract_num: "v1", #require if contract validation enabled
         brand: "COBRA", #required
         model: "CDR900", #required
         new_product: "Y", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
-        technology_num: "HDMI", #required
+        technology_num: "LED", #required
         qty_technology: "1", #required
         application_type: "Component",
         application_market: "",
@@ -80,13 +84,13 @@ add_items_request = RestClient::Request.new(
     royalty_report_num: example_report_num, # your RR identifier
     royalty_report_items: [
       {
-        contract_num: "SAMPLE123", #require if contract validation enabled
+        contract_num: "v1", #require if contract validation enabled
         brand: "COBRA", #required
-        model: "CDR90099", #required
-        new_product: "Y", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
-        technology_num: "HDMI", #required
+        model: "nonexistent1", #required
+        new_product: "N", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
+        technology_num: "LED", #required
         qty_technology: "1", #required
-        application_type: "Component",
+        application_type: "nonexistent Component",
         application_market: "",
         description: "-- This description is a sample description from rvx-api-demo call --",
         unit_price: "100.00",
@@ -117,6 +121,11 @@ invoice_report_request = RestClient::Request.new(
   }.to_json)
 
 caller = ApiCaller.new ENV['KEY'], ENV['SECRET']
-caller.call_api create_rr_request
+# puts "\ncreate rr request: "
+# caller.call_api create_rr_request
+
+puts "\nadd item request: "
 caller.call_api add_items_request
-caller.call_api invoice_report_request
+
+# puts "\ninvoice rr request: "
+# caller.call_api invoice_report_request

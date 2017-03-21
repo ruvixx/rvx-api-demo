@@ -18,7 +18,7 @@ RestClient.log = $stdout
     'Content-Type' => 'application/json'
   },
   :payload => {
-    name: "HDMI004", #required
+    name: "HDMI001", #required
     url: "www.sample.from.rvx-api-demo",
     country: "Afghanistan",
     notes: "--- These notes are a sample from rvx-api-demo --",
@@ -38,9 +38,15 @@ RestClient.log = $stdout
         #must be included if contracts included
         technologies: [
           {
-            technology_num: "HDMI",
-            #either "QIA" or "Not Reporting"
-            reporting_type: "Not Reporting"
+            technology_num: "THX",
+            reporting_type: "QIA",
+            restrictions: [
+              {
+                number_of_uses: 337,
+                restriction_type: 'Entity',
+                entity_num: 'Reality Inc num',
+              }
+            ],
           }
         ]
       }
@@ -50,6 +56,11 @@ RestClient.log = $stdout
 
 @signed_request = ApiAuth.sign!(@request, @access_id, @secret_key)
 
-response = @signed_request.execute
+begin
+  response = @signed_request.execute
+  $stdout.print response.to_s + "\n"
+rescue => bad_request
+  response = JSON.parse(bad_request.response)
+  $stdout.print("#{bad_request.message}: #{response["error"]}\n")
+end
 
-$stdout.print response.to_s + "\n"
