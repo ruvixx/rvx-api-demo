@@ -16,11 +16,13 @@ class ApiCaller
   def call_api(request)
     @signed_request = ApiAuth.sign!(request, @access_id, @secret_key, :with_http_method => true)
 
-    response = @signed_request.execute
-
-    $stdout.print response.to_s + "\n"
-
-    response
+    begin
+      response = @signed_request.execute
+      $stdout.print response.to_s + "\n"
+    rescue => bad_request
+      response = JSON.parse(bad_request.response)
+      $stdout.print("#{bad_request.message}: #{response["error"]}\n")
+    end
   end
 
 end
@@ -44,6 +46,7 @@ create_rr_request = RestClient::Request.new(
     notes: "--- These notes are a sample from rvx-api-demo --",
     historical: "Y", # false, true, 'Y', 'N' - sets the timestamps correctly if this is a legacy report
     amount: "1000.00",
+    batch_mode: true, # needed to add additional royalty report items via the other endpoint
     royalty_report_items: [
       {
         contract_num: "SAMPLE123", #require if contract validation enabled
@@ -78,6 +81,9 @@ add_items_request = RestClient::Request.new(
   },
   :payload => {
     royalty_report_num: example_report_num, # your RR identifier
+    # flag signalling no additional royalty report items. Ruvixx will now validate Royalty Report Items, as well as
+    # calculate total amount of Royalty Report
+    end_of_file: true,
     royalty_report_items: [
       {
         contract_num: "SAMPLE123", #require if contract validation enabled
