@@ -31,7 +31,7 @@ end
 
 RestClient.log = $stdout
 
-example_report_num = "MY_RR_NUM00000000001000"
+example_report_num = "MY_RR_NUM1234"
 
 create_rr_request = RestClient::Request.new(
   :url => ENV['URL']+"/api/v1/developer/royalty_reports",
@@ -40,7 +40,7 @@ create_rr_request = RestClient::Request.new(
     'Content-Type' => 'application/json'
   },
   :payload => {
-    entity_num: "vizio_num", #required
+    entity_num: "HDMI001", #required
     royalty_report_num: example_report_num, # your RR identifier
     start_date: '2015-01-01',
     end_date: '2015-03-31',
@@ -50,11 +50,11 @@ create_rr_request = RestClient::Request.new(
     amount: "1000.00",
     royalty_report_items: [
       {
-        contract_num: "v1", #require if contract validation enabled
+        contract_num: "SAMPLE123", #require if contract validation enabled
         brand: "COBRA", #required
         model: "CDR900", #required
         new_product: "Y", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
-        technology_num: "LED", #required
+        technology_num: "HDMI", #required
         qty_technology: "1", #required
         application_type: "Component",
         application_market: "",
@@ -84,13 +84,13 @@ add_items_request = RestClient::Request.new(
     royalty_report_num: example_report_num, # your RR identifier
     royalty_report_items: [
       {
-        contract_num: "v1", #require if contract validation enabled
+        contract_num: "SAMPLE123", #require if contract validation enabled
         brand: "COBRA", #required
-        model: "nonexistent1", #required
-        new_product: "N", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
-        technology_num: "LED", #required
+        model: "CDR90099", #required
+        new_product: "Y", # 'Y': Will create product if not exists; 'N': Sends error if product does not exist
+        technology_num: "HDMI", #required
         qty_technology: "1", #required
-        application_type: "nonexistent Component",
+        application_type: "Component",
         application_market: "",
         description: "-- This description is a sample description from rvx-api-demo call --",
         unit_price: "100.00",

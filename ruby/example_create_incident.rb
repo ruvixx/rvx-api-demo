@@ -63,7 +63,7 @@ RestClient.log = $stdout
           brand: "KNOWN BRAND",
           product_category: 'Tablet',
           entity: {
-            id: 671
+            name: "SAMPLE REPORTER"
           }
         },
         qty: 10,
