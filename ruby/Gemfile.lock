@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     api-auth (1.5.0)
-    byebug (9.0.6)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.2)
@@ -23,7 +22,6 @@ PLATFORMS
 
 DEPENDENCIES
   api-auth (~> 1.5.0)
-  byebug
   dotenv
   rest-client
 
