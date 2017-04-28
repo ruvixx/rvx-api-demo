@@ -3,22 +3,19 @@ require 'dotenv'
 Dotenv.load
 
 require 'rest-client'
-require 'api-auth'
 require 'date'
-
-@access_id = ENV['KEY']
-@secret_key = ENV['SECRET']
+require './api_caller'
 
 RestClient.log = $stdout
 
-@request = RestClient::Request.new(
+request = RestClient::Request.new(
   :url => ENV['URL']+"/api/v1/developer/entities",
   :method => :post,
   :headers => {
     'Content-Type' => 'application/json'
   },
   :payload => {
-    name: "HDMI004", #required
+    name: "HDMI001", #required
     url: "www.sample.from.rvx-api-demo",
     country: "Afghanistan",
     notes: "--- These notes are a sample from rvx-api-demo --",
@@ -38,18 +35,49 @@ RestClient.log = $stdout
         #must be included if contracts included
         technologies: [
           {
-            technology_num: "HDMI",
-            #either "QIA" or "Not Reporting"
-            reporting_type: "Not Reporting"
+            technology_num: "THX",
+            reporting_type: "QIA",
+            restrictions: [
+              {
+                number_of_uses: 337,
+                restriction_type: 'Entity',
+                entity_num: 'Reality Inc num',
+              }
+            ],
           }
         ]
+      }
+    ],
+    addresses: [{
+                  address_num: 'Ruvixx',
+                  street1: '300 Brannan St.',
+                  street2: 'Suite 507',
+                  city: 'San Francisco',
+                  state: 'CA',
+                  postal_code: '94107',
+                  country: 'United States',
+                }],
+    contacts: [
+      {
+        email: 'new@email.com',
+        phones: [{
+                   number: '111-1111',
+                   type: 'Mobile',
+                   is_primary: true
+                 },{
+                   number: '111-1111',
+                   type: 'Work'
+                 }],
+        fax: '888-8888',
+        name: 'John Smith',
+        title: 'VP',
+        contact_status: 'Active'
       }
     ]
   }.to_json)
 
+caller = ApiCaller.new ENV['KEY'], ENV['SECRET']
 
-@signed_request = ApiAuth.sign!(@request, @access_id, @secret_key)
+puts "\ndo request: "
+caller.call_api request
 
-response = @signed_request.execute
-
-$stdout.print response.to_s + "\n"

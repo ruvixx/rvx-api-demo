@@ -3,27 +3,8 @@ require 'dotenv'
 Dotenv.load
 
 require 'rest-client'
-require 'api-auth'
 require 'date'
-
-class ApiCaller
-
-  def initialize(access_id, secret_key)
-    @access_id = access_id
-    @secret_key = secret_key
-  end
-
-  def call_api(request)
-    @signed_request = ApiAuth.sign!(request, @access_id, @secret_key, :with_http_method => true)
-
-    response = @signed_request.execute
-
-    $stdout.print response.to_s + "\n"
-
-    response
-  end
-
-end
+require './api_caller'
 
 RestClient.log = $stdout
 
@@ -117,6 +98,11 @@ invoice_report_request = RestClient::Request.new(
   }.to_json)
 
 caller = ApiCaller.new ENV['KEY'], ENV['SECRET']
-caller.call_api create_rr_request
+# puts "\ncreate rr request: "
+# caller.call_api create_rr_request
+
+puts "\nadd item request: "
 caller.call_api add_items_request
-caller.call_api invoice_report_request
+
+# puts "\ninvoice rr request: "
+# caller.call_api invoice_report_request
