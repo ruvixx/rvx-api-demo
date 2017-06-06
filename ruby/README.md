@@ -10,12 +10,14 @@ required `ruby-2.2.2`
 ```
 $> bundle install
 
-$> chmod 755 ./example_create_incident.rb
-
 -- UPDATE your .env file to include
-SECRET=XXXX
-KEY=XXXX
+ACCESS_ID=XXXX
+SECRET_KEY=XXXX
 URL=http://---rvx-platform-url
 
-$> ./example_create_incident.rb  # Please explore other calls
+$> cd incidents
+
+$> chmod 755 ./create_incident.rb
+
+$> ./create_incident.rb
 ```
