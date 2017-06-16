@@ -23,8 +23,11 @@ class ApiCaller
 
     begin
       response = @signed_request.execute
-      pretty_response = JSON.pretty_generate(JSON.parse(response)) + "\n"
-      $stdout.print(pretty_response)
+      $stdout.print(response.description)
+      if response.body.size > 0
+        pretty_response = JSON.pretty_generate(JSON.parse(response.body)) + "\n"
+        $stdout.print(pretty_response)
+      end
       response
     rescue => bad_request
       response = bad_request.response

@@ -24,6 +24,7 @@ client.call_api :post, "/api/v1/developer/entities", {
   }],
   contacts: [
     {
+      contact_num: "c001",
       name: "John Smith",
       email: "john@smith.com",
       phones: [
