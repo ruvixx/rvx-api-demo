@@ -37,3 +37,14 @@ build/
 .rvmrc
 
 .env
+/php/vendor/
+java/.gradle/
+php/vendor/autoload.php
+php/vendor/composer/
+php/vendor/guzzle/
+php/vendor/guzzlehttp/
+php/vendor/psr/
+php/vendor/sanchobbdo/
+php/vendor/symfony/
+ruby/scratch
+php/composer.phar
