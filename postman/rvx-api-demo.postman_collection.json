@@ -1,0 +1,116 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Ruvixx API Demo using Api Auth",
+		"_postman_id": "b17259fb-3684-f596-6d5c-061f24737973",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Create Royalty Report",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"eval(postman.getGlobalVariable('apiAuth.js'));"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{hostname}}/api/v1/developer/royalty_reports",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorizationHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-MD5",
+						"value": "{{contentMd5Header}}",
+						"description": ""
+					},
+					{
+						"key": "DATE",
+						"value": "{{dateHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "\n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"entity_num\": \"Entity_01\", \n  \"royalty_report_num\": \"RoyaltyReport_01\", \n  \"start_date\": \"2017-07-01\",\n  \"end_date\": \"2017-09-30\",\n  \"currency\": \"USD\",\n  \"notes\": \"--- These notes are a sample from rvx-api-demo --\",\n  \"amount\": \"1000.00\",\n  \"royalty_report_items\": [\n    {\n      \"contract_num\": \"SAMPLE123\", \n      \"brand\": \"TestBrand1\", \n      \"model\": \"TestModel1\", \n      \"new_product\": \"Y\", \n      \"technology_num\": \"HE-AAC\", \n      \"qty_technology\": \"1\", \n      \"application_type\": \"Component\",\n      \"application_market\": \"\",\n      \"description\": \"-- This is a sample description from example Postman call --\",\n      \"unit_price\": \"100.00\",\n      \"qty\": \"100\",\n      \"royalty_due\": \"1000.00\",\n      \"exchanged_amount\": \"1000.00\",\n      \"exchange_rate\": \"1.0\",\n      \"product_category\": \"Tablet\",\n      \"avg_sales_price\": \"93.00\",\n      \"net_revenue\": \"700.00\"\n    }\n  ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Incidents",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"eval(postman.getGlobalVariable('apiAuth.js'));"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{hostname}}/api/v1/developer/incidents",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorizationHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-MD5",
+						"value": "{{contentMd5Header}}",
+						"description": ""
+					},
+					{
+						"key": "DATE",
+						"value": "{{dateHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{contentTypeHeader}}",
+						"description": "\n"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
