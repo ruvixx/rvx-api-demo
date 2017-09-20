@@ -92,21 +92,54 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "",
-							"value": "",
-							"description": "",
-							"type": "text"
-						},
-						{
-							"key": "",
-							"value": "",
-							"description": "",
-							"type": "text"
-						}
-					]
+					"mode": "raw",
+          "raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Entities",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"eval(postman.getGlobalVariable('apiAuth.js'));"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{hostname}}/api/v1/developer/entities",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authorizationHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-MD5",
+						"value": "{{contentMd5Header}}",
+						"description": ""
+					},
+					{
+						"key": "DATE",
+						"value": "{{dateHeader}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "{{contentTypeHeader}}",
+						"description": "\n"
+					}
+				],
+				"body": {
+					"mode": "raw",
+          "raw": ""
 				},
 				"description": ""
 			},
