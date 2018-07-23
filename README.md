@@ -17,6 +17,7 @@ We have provided a Ruby example which simply shows the JSON payload for the foll
 
 - "Create Certified Product" POST /v1/products/new [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/example_create_product.rb)
 
+- "Create Rds Listing" POST /v1/rds/rds_listings [See example](https://github.com/ruvixx/rvx-api-demo/blob/master/ruby/rds/listings/create_rds_listing.rb)
 
 We have provided a Java implementation from one of our partners for those using Java. [See Java example](https://github.com/ruvixx/rvx-api-demo/blob/master/java)
 
