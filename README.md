@@ -51,3 +51,6 @@ Base path: `/api/v1/developer`
 - POST `/sticker_transactions/reset_balance` Add starting sticker balance
 - POST `/sticker_transactions/purchase` Add Sticker balance increment API
 - POST `/sticker_transactions/return` Add Sticker balance decrement API
+
+**rds_listings**
+- POST `/rds_listings` Create new Rds Listing via API
